@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Naruto Editor</title>
+    <link rel="stylesheet" href="libraries/jquery-ui.css" />
+    <link rel="stylesheet" href="editor/lib/codemirror.css" />
+    <!-- Addon -->
+    <link rel="stylesheet" href="editor/addon/scroll/simplescrollbars.css" />
+
+    <!-- Themes -->
+    <link rel="stylesheet" href="editor/theme/3024-day.css" />
+    <link rel="stylesheet" href="editor/theme/3024-night.css" />
+    <link rel="stylesheet" href="editor/theme/abcdef.css" />
+    <link rel="stylesheet" href="editor/theme/ambiance.css" />
+    <link rel="stylesheet" href="editor/theme/ayu-dark.css" />
+    <link rel="stylesheet" href="editor/theme/ayu-mirage.css" />
+    <link rel="stylesheet" href="editor/theme/base16-dark.css" />
+    <link rel="stylesheet" href="editor/theme/bespin.css" />
+    <link rel="stylesheet" href="editor/theme/base16-light.css" />
+    <link rel="stylesheet" href="editor/theme/blackboard.css" />
+    <link rel="stylesheet" href="editor/theme/cobalt.css" />
+    <link rel="stylesheet" href="editor/theme/colorforth.css" />
+    <link rel="stylesheet" href="editor/theme/dracula.css" />
+    <link rel="stylesheet" href="editor/theme/duotone-dark.css" />
+    <link rel="stylesheet" href="editor/theme/duotone-light.css" />
+    <link rel="stylesheet" href="editor/theme/eclipse.css" />
+    <link rel="stylesheet" href="editor/theme/elegant.css" />
+    <link rel="stylesheet" href="editor/theme/erlang-dark.css" />
+    <link rel="stylesheet" href="editor/theme/gruvbox-dark.css" />
+    <link rel="stylesheet" href="editor/theme/hopscotch.css" />
+    <link rel="stylesheet" href="editor/theme/icecoder.css" />
+    <link rel="stylesheet" href="editor/theme/isotope.css" />
+    <link rel="stylesheet" href="editor/theme/lesser-dark.css" />
+    <link rel="stylesheet" href="editor/theme/liquibyte.css" />
+    <link rel="stylesheet" href="editor/theme/lucario.css" />
+    <link rel="stylesheet" href="editor/theme/material.css" />
+    <link rel="stylesheet" href="editor/theme/material-darker.css" />
+    <link rel="stylesheet" href="editor/theme/material-palenight.css" />
+    <link rel="stylesheet" href="editor/theme/material-ocean.css" />
+    <link rel="stylesheet" href="editor/theme/mbo.css" />
+    <link rel="stylesheet" href="editor/theme/mdn-like.css" />
+    <link rel="stylesheet" href="editor/theme/midnight.css" />
+    <link rel="stylesheet" href="editor/theme/monokai.css" />
+    <link rel="stylesheet" href="editor/theme/moxer.css" />
+    <link rel="stylesheet" href="editor/theme/neat.css" />
+    <link rel="stylesheet" href="editor/theme/neo.css" />
+    <link rel="stylesheet" href="editor/theme/night.css" />
+    <link rel="stylesheet" href="editor/theme/nord.css" />
+    <link rel="stylesheet" href="editor/theme/oceanic-next.css" />
+    <link rel="stylesheet" href="editor/theme/panda-syntax.css" />
+    <link rel="stylesheet" href="editor/theme/paraiso-dark.css" />
+    <link rel="stylesheet" href="editor/theme/paraiso-light.css" />
+    <link rel="stylesheet" href="editor/theme/pastel-on-dark.css" />
+    <link rel="stylesheet" href="editor/theme/railscasts.css" />
+    <link rel="stylesheet" href="editor/theme/rubyblue.css" />
+    <link rel="stylesheet" href="editor/theme/seti.css" />
+    <link rel="stylesheet" href="editor/theme/shadowfox.css" />
+    <link rel="stylesheet" href="editor/theme/solarized.css" />
+    <link rel="stylesheet" href="editor/theme/the-matrix.css" />
+    <link rel="stylesheet" href="editor/theme/tomorrow-night-bright.css" />
+    <link rel="stylesheet" href="editor/theme/tomorrow-night-eighties.css" />
+    <link rel="stylesheet" href="editor/theme/ttcn.css" />
+    <link rel="stylesheet" href="editor/theme/twilight.css" />
+    <link rel="stylesheet" href="editor/theme/vibrant-ink.css" />
+    <link rel="stylesheet" href="editor/theme/xq-dark.css" />
+    <link rel="stylesheet" href="editor/theme/xq-light.css" />
+    <link rel="stylesheet" href="editor/theme/yeti.css" />
+    <link rel="stylesheet" href="editor/theme/idea.css" />
+    <link rel="stylesheet" href="editor/theme/darcula.css" />
+    <link rel="stylesheet" href="editor/theme/yonce.css" />
+    <link rel="stylesheet" href="editor/theme/zenburn.css" />
+    <link rel="stylesheet" href="css/single-file-styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="titlebar">
+        <!-- <div class="title">Naruto Editor</div> -->
+        <div class="title-img"><img src="images/logo.png" alt="" /></div>
+        <div class="windowOptions">
+          <button id="minimize">-</button>
+          <button id="maximize">&square;</button>
+          <button id="close">&times;</button>
+        </div>
+      </div>
+      <div class="options-bar">
+        <button id="openFile">Open File</button>
+        <button id="saveFile">Save File</button>
+      </div>
+      <div class="code-editor">
+        <textarea id="editor"></textarea>
+      </div>
+      <div class="status-bar">
+        <div class="saved">Un Saved</div>
+        <div class="language">HTML</div>
+      </div>
+    </div>
+    <script>
+      if (typeof module === "object") {
+        window.module = module;
+        module = undefined;
+      }
+    </script>
+    <!-- JQuery and JQuery UI -->
+    <script src="libraries/jquery.min.js"></script>
+    <script src="libraries/jquery-ui.min.js"></script>
+    <!-- CodeMirror -->
+    <script src="editor/lib/codemirror.js"></script>
+    <!-- Modes -->
+    <script src="editor/mode/javascript/javascript.js"></script>
+    <script src="editor/mode/python/python.js"></script>
+    <script src="editor/mode/htmlembedded/htmlembedded.js"></script>
+    <script src="editor/mode/css/css.js"></script>
+    <script src="editor/mode/php/php.js"></script>
+    <!-- Addon -->
+    <script src="editor/addon/selection/active-line.js"></script>
+    <script src="editor/addon/edit/matchbrackets.js"></script>
+    <script src="editor/addon/fold/foldgutter.js"></script>
+    <script src="editor/addon/scroll/simplescrollbars.js"></script>
+
+    <!-- Custom Scripts -->
+    <script src="js/contents.js"></script>
+    <script src="js/fileEditor.js"></script>
+    <script src="js/header.js"></script>
+    <script src="./js/renderer.js"></script>
+  </body>
+</html>

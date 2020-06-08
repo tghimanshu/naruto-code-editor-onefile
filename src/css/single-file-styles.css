@@ -1,0 +1,120 @@
+/*******************************
+            GLOBALS 
+********************************/
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.clear {
+  clear: both;
+}
+
+.container {
+  width: 100vw;
+  height: 100vh;
+  background: #282a37;
+  display: grid;
+  grid-template-rows: auto auto 1fr auto;
+}
+ul {
+  list-style-type: none;
+}
+
+/*******************************
+          Title Bar 
+********************************/
+
+.titlebar {
+  background: #383a47;
+  color: white;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  height: auto;
+}
+.titlebar .title {
+  font-size: 1.6rem;
+  margin-left: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  -webkit-user-drag: auto;
+}
+.titlebar .title-img {
+  margin-left: 10px;
+  -webkit-user-drag: auto;
+}
+.titlebar img {
+  width: 60px;
+  height: auto;
+}
+.titlebar .windowOptions button {
+  color: white;
+  height: 100%;
+  padding-left: 16px;
+  padding-right: 16px;
+  font-size: 1.6rem;
+  border: none;
+  background: none;
+  -webkit-user-select: none;
+  cursor: pointer;
+  outline: none;
+}
+.titlebar .windowOptions button:hover {
+  background: #282a37;
+}
+
+/*******************************
+          Options Bar 
+********************************/
+
+.options-bar {
+  padding: 6px;
+  background: #383a57;
+  color: white;
+}
+
+#openFile,
+#saveFile {
+  background: none;
+  padding: 8px;
+  color: white;
+  border: 2px solid orange;
+}
+
+/*******************************
+          Code Editor 
+********************************/
+
+.code-editor {
+  position: relative;
+  width: 100%;
+  /* height: 100%; */
+  background: url("../images/background.jpg") no-repeat right center/cover;
+}
+/*******************************
+          Status Bar 
+********************************/
+
+.status-bar {
+  padding: 6px;
+  background: #383a57;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+}
+
+/*******************************
+              Editor 
+********************************/
+
+#editor {
+  display: none;
+}
+.CodeMirror {
+  /* width: 100%; */
+  /* height: 100%; */
+  font-size: 24px;
+  visibility: hidden;
+}
