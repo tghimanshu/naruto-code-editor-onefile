@@ -7,12 +7,17 @@ const editor = CodeMirror.fromTextArea(document.getElementById("editor"), {
   mode: "",
   styleActiveLine: true,
   matchBrackets: true,
-  theme: "dracula",
+  theme: "blackboard",
   lineWrapping: "wrap",
   autoComplete: true,
   foldGutters: true,
   scrollbarStyle: "overlay",
+  autoCloseBrackets: true,
+  autoCloseTags: true,
 });
+
+
+CodeMirror.modeURL = "editor/mode/%N/%N.js";
 editor.setSize(
   "100%",
   document.getElementsByClassName("code-editor")[0].clientHeight

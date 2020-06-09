@@ -1,10 +1,4 @@
-openFile.addEventListener("click", (e) => {
-  let openFile = dialog
-    .showOpenDialog({
-      properties: ["openFile"],
-    })
-    .then(openFileInEditor);
-});
+openFileBtn.addEventListener("click", openFile);
 
 editor.on("change", (e) => {
   // console.log(e);
@@ -14,13 +8,4 @@ editor.on("change", (e) => {
   // console.log(loadedFile);
 });
 
-saveFile.addEventListener("click", (e) => {
-  if (loadedFile.changed === true && loadedFile.saved === false) {
-    fs.writeFile(loadedFile.filePath, editor.getValue(), (err, data) => {
-      alert("Doc Saved!");
-      loadedFile.changed = false;
-      loadedFile.saved = true;
-      document.getElementsByClassName("saved").innerHTML = "Saved";
-    });
-  }
-});
+saveFileBtn.addEventListener("click", saveFile);

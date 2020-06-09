@@ -1,21 +1,20 @@
 {
-  "name": "electron-quick-start",
+  "name": "naruto-editor",
   "version": "1.0.0",
-  "description": "A minimal Electron application",
+  "description": "A minimal Naruto Editor",
   "main": "main.js",
   "scripts": {
     "start": "electron ."
   },
-  "repository": "https://github.com/electron/electron-quick-start",
+  "repository": "https://github.com/tghimanshu/naruto-code-editor-onefile",
   "keywords": [
-    "Electron",
-    "quick",
-    "start",
-    "tutorial",
-    "demo"
+    "TG Himanshu",
+    "Naruto",
+    "Code Editor",
+    "Code",
+    "Editor"
   ],
-  "author": "GitHub",
-  "license": "CC0-1.0",
+  "author": "Himanshu Gohil",
   "devDependencies": {
     "electron": "^9.0.0"
   },
