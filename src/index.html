@@ -9,6 +9,18 @@
     <!-- Addon -->
     <link rel="stylesheet" href="editor/addon/scroll/simplescrollbars.css" />
 
+    <!-- Google Material Icons -->
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+
+    <!-- Devicon Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.rawgit.com/konpa/devicon/df6431e323547add1b4cf45992913f15286456d3/devicon.min.css"
+    />
+
     <!-- Themes -->
     <link rel="stylesheet" href="editor/theme/3024-day.css" />
     <link rel="stylesheet" href="editor/theme/3024-night.css" />
@@ -89,7 +101,92 @@
         <button id="saveFile">Save File</button>
       </div>
       <div class="code-editor">
-        <textarea id="editor"></textarea>
+        <div class="left-panel">
+          <div id="active-files">
+            <div class="active-files">Active Files</div>
+            <ul class="active-files-ul"></ul>
+          </div>
+          <div id="explorer-options">
+            <div id="folder-name">Folder Name</div>
+            <div id="folder-create">
+              <i class="material-icons">create_new_folder</i>
+            </div>
+            <!-- <div id="folder-collapse"><i class="material-icons">rule_folder</i></div> -->
+            <div id="folder-change" title="change folder  ">
+              <i class="material-icons">folder</i>
+            </div>
+          </div>
+          <div id="opened-folder">
+            <ul id="opened-folder-ul" class="folder">
+              <div class="folder-contents">
+                <li class="folder">
+                  <div>
+                    <div class="folder-toggle">
+                      <i class="material-icons">play_arrow</i>
+                    </div>
+                    <div class="folder-icon">
+                      <i class="material-icons">folder</i>
+                    </div>
+                    <div class="folder-name">Folder</div>
+                  </div>
+                </li>
+                <li class="folder">
+                  <div>
+                    <div class="folder-toggle">
+                      <i class="material-icons">play_arrow</i>
+                    </div>
+                    <div class="folder-icon">
+                      <i class="material-icons">folder</i>
+                    </div>
+                    <div class="folder-name">Folder</div>
+                  </div>
+                  <ul class="folder-contents">
+                    <li class="file">
+                      <i class="file-icon devicon-nodejs-plain colored"></i>
+                      <div class="file-name">NODE JS</div>
+                      <div class="file-close">&times;</div>
+                    </li>
+                    <li class="file">
+                      <i class="file-icon devicon-html5-plain colored"></i>
+                      <div class="file-name">HTML</div>
+                      <div class="file-close">&times;</div>
+                    </li>
+                    <li class="file">
+                      <i class="file-icon devicon-php-plain colored"></i>
+                      <div class="file-name">PHP</div>
+                      <div class="file-close">&times;</div>
+                    </li>
+                    <li class="file">
+                      <i class="file-icon devicon-javascript-plain colored"></i>
+                      <div class="file-name">JAVASCRIPT</div>
+                      <div class="file-close">&times;</div>
+                    </li>
+                    <li class="file">
+                      <i class="file-icon devicon-react-plain colored"></i>
+                      <div class="file-name">REACT JS</div>
+                      <div class="file-close">&times;</div>
+                    </li>
+                  </ul>
+                </li>
+                <li class="file">
+                  <i class="file-icon devicon-javascript-plain colored"></i>
+                  <div class="file-name">JAVASCRIPT</div>
+                  <div class="file-close">&times;</div>
+                </li>
+                <li class="file">
+                  <i class="file-icon devicon-react-plain colored"></i>
+                  <div class="file-name">REACT JS</div>
+                  <div class="file-close">&times;</div>
+                </li>
+              </div>
+            </ul>
+          </div>
+        </div>
+        <!-- Left Pane -->
+        <div class="editor-panel">
+          <!-- <textarea id="editor"></textarea> -->
+          <!-- <textarea id="editor"></textarea> -->
+        </div>
       </div>
       <div class="status-bar">
         <div class="saved">Un Saved</div>
@@ -110,7 +207,7 @@
     <!-- Modes -->
     <script src="editor/addon/mode/loadmode.js"></script>
     <script src="editor/mode/meta.js"></script>
-    
+
     <!-- Addon -->
     <script src="editor/addon/selection/active-line.js"></script>
     <script src="editor/addon/edit/matchbrackets.js"></script>
@@ -120,10 +217,29 @@
     <script src="editor/addon/edit/closetag.js"></script>
 
     <!-- Custom Scripts -->
-    <script src="js/contents.js"></script>
+    <script src="js/globals.js"></script>
     <script src="js/fileEditor.js"></script>
     <script src="js/header.js"></script>
     <script src="./js/renderer.js"></script>
     <script src="./js/shortcuts.js"></script>
+    <script src="./js/experiments.js"></script>
+    <!-- <script src="./js/fileEditorExperiments.js"></script> -->
+    <script>
+      /* let idkEditor = CodeMirror.fromTextArea(
+        document.getElementById("editor"),
+        {
+          lineNumbers: true,
+          gutter: true,
+          // theme: "blackboard",
+        }
+      ); */
+      if (
+        leftPanelHeight !=
+        document.getElementsByClassName("left-panel")[0].clientHeight
+      ) {
+        document.getElementsByClassName("left-panel")[0].style.height =
+          leftPanelHeight + "px";
+      }
+    </script>
   </body>
 </html>
