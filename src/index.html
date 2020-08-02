@@ -193,6 +193,10 @@
         <div class="language">HTML</div>
       </div>
     </div>
+    <div class="setting">
+      <div class="setting-popup"></div>
+    </div>
+    <div id="untitled-files" style="display: none;"></div>
     <script>
       if (typeof module === "object") {
         window.module = module;
@@ -222,17 +226,8 @@
     <script src="js/header.js"></script>
     <script src="./js/renderer.js"></script>
     <script src="./js/shortcuts.js"></script>
-    <script src="./js/experiments.js"></script>
-    <!-- <script src="./js/fileEditorExperiments.js"></script> -->
+    <script src="./js/settings.js"></script>
     <script>
-      /* let idkEditor = CodeMirror.fromTextArea(
-        document.getElementById("editor"),
-        {
-          lineNumbers: true,
-          gutter: true,
-          // theme: "blackboard",
-        }
-      ); */
       if (
         leftPanelHeight !=
         document.getElementsByClassName("left-panel")[0].clientHeight

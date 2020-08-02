@@ -6,6 +6,15 @@ const path = require("path");
 
 const activeFiles = [];
 
+// let activeFile = {
+//   editorId: id,
+//   fileId: id.slice(7),
+//   filePath: document.getElementById(id.slice(7)).getAttribute("data-path"),
+//   active: true,
+//   saved: true,
+//   changed: false,
+// };
+
 const getActiveFile = () => {
   return activeFiles.find((file) => file.active === true);
 };
