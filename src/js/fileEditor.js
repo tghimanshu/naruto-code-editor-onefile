@@ -74,6 +74,9 @@ const saveFile = (e) => {
         alert("Doc Saved!");
         activeFile.changed = false;
         activeFile.saved = true;
+        let actFile = document.getElementById("active_" + activeFile.fileId);
+        actFile.getElementsByClassName("file-close")[0].innerHTML = "&times;";
+        console.log(actFile);
         document.getElementsByClassName("saved").innerHTML = "Saved";
       });
     }
@@ -189,6 +192,23 @@ const fileEditor = (id) => {
       document
         .getElementsByClassName("active-files-ul")[0]
         .appendChild(dblcFile);
+    } else {
+      // editing circle option
+      let actFile = document.getElementById("active_" + fId);
+      let actFClose = actFile.getElementsByClassName("file-close")[0];
+      actFClose.innerHTML = "&#x25CF;";
+      let isChanged = false;
+      actFile.addEventListener("mouseover", function (e) {
+        if (actFClose.innerHTML === "&#x25CF;") {
+          actFClose.innerHTML = "&times;";
+          isChanged = true;
+        }
+      });
+      actFile.addEventListener("mouseout", function (e) {
+        if (isChanged) {
+          actFClose.innerHTML = "&#x25CF;";
+        }
+      });
     }
   });
   return editor;
