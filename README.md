@@ -27,8 +27,12 @@ or
 npm install electron-packager --save--dev
 ```
 
-then 
+then
 
 ```
 electron-packager .
 ```
+
+## Screenshots
+
+![Screenshot](screenshots/screenshot.png)
