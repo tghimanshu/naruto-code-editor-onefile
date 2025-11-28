@@ -1,9 +1,22 @@
+/**
+ * @fileoverview Main process file for the Naruto Code Editor.
+ * This file controls the application lifecycle and creates native browser windows.
+ */
+
 // Modules to control application life and create native browser window
 const { app, BrowserWindow } = require("electron");
 const windowStateKeeper = require("electron-window-state");
 const path = require("path");
 const ipcMain = require("electron").ipcMain;
 
+/**
+ * Creates the main application window.
+ * This function initializes the BrowserWindow with window state management,
+ * configures web preferences, and loads the index.html file.
+ *
+ * @function createWindow
+ * @returns {void}
+ */
 function createWindow() {
   // Create the browser window.
   const mainWindowState = windowStateKeeper({
@@ -45,7 +58,11 @@ app.whenReady().then(() => {
   });
 });
 
-// Quit when all windows are closed.
+/**
+ * Event listener for the 'window-all-closed' event.
+ * Quits the application when all windows are closed, except on macOS
+ * where applications typically stay active until explicitly quit.
+ */
 app.on("window-all-closed", function () {
   // On macOS it is common for applications and their menu bar
   // to stay active until the user quits explicitly with Cmd + Q

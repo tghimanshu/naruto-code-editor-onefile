@@ -1,12 +1,31 @@
+/**
+ * @fileoverview Manages file operations including opening, saving, and editing files.
+ * Handles the CodeMirror editor instances, file system interactions, and file explorer view.
+ */
+
 let openFileBtn = document.getElementById("openFile");
 let saveFileBtn = document.getElementById("saveFile");
 
+/**
+ * Extracts the file extension from a file path.
+ *
+ * @function getExtension
+ * @param {string} filePath - The full path of the file.
+ * @returns {string} The file extension (e.g., "js", "html").
+ */
 const getExtension = (filePath) => {
   let mainFile = filePath.split("\\").pop();
   let ext = mainFile.split(".").pop();
   return ext;
 };
 
+/**
+ * Retrieves the CodeMirror mode information based on the file extension.
+ *
+ * @function getMode
+ * @param {string} extension - The file extension.
+ * @returns {Object} An object containing mode information (mime, mode, name, etc.).
+ */
 const getMode = (extension) => {
   let modeInfo = CodeMirror.findModeByExtension(extension);
   // console.log(modeInfo);
@@ -17,6 +36,16 @@ const getMode = (extension) => {
             Opening File
 ***********************************/
 
+/**
+ * Opens a file in the CodeMirror editor.
+ * Initializes the editor if it doesn't exist, or updates it if it does.
+ * Sets the editor mode and theme based on the file content and type.
+ *
+ * @function openFileInEditor
+ * @param {string} editorId - The unique ID for the editor instance.
+ * @param {string} file - The file path to open.
+ * @returns {Object|undefined} The CodeMirror editor instance if created/updated, otherwise undefined.
+ */
 const openFileInEditor = (editorId, file) => {
   let cm = document.getElementsByClassName("CodeMirror");
   for (let i = 0; i < cm.length; i++) {
@@ -52,6 +81,14 @@ const openFileInEditor = (editorId, file) => {
   }
 };
 
+/**
+ * Triggered when the open file action is initiated (e.g., button click).
+ * Opens a system dialog to select a file and then opens it in the editor.
+ *
+ * @function openFile
+ * @param {Event} e - The event object.
+ * @returns {void}
+ */
 const openFile = (e) => {
   let openFile = dialog
     .showOpenDialog({
@@ -64,6 +101,14 @@ const openFile = (e) => {
             Saving File
 ***********************************/
 
+/**
+ * Saves the currently active file.
+ * If the file exists, it overwrites it. If it's a new file, it opens a "Save As" dialog.
+ *
+ * @function saveFile
+ * @param {Event} e - The event object.
+ * @returns {void}
+ */
 const saveFile = (e) => {
   let activeFile = getActiveFile();
   let editor = document.getElementById(activeFile.editorId).nextSibling
@@ -112,6 +157,15 @@ const saveFile = (e) => {
   }
 };
 
+/**
+ * Initializes or retrieves a CodeMirror editor instance for a given ID.
+ * Manages the visibility of editors, creates new textarea elements if needed,
+ * and sets up event listeners for editor changes.
+ *
+ * @function fileEditor
+ * @param {string} id - The ID of the editor/textarea element.
+ * @returns {Object} The CodeMirror editor instance.
+ */
 const fileEditor = (id) => {
   let editor;
 
@@ -216,6 +270,14 @@ const fileEditor = (id) => {
 
 CodeMirror.modeURL = "editor/mode/%N/%N.js";
 
+/**
+ * Creates a DOM element representing a file in the file explorer.
+ *
+ * @function createAFile
+ * @param {string} name - The name of the file (unused in logic, path is used).
+ * @param {string} path - The file path.
+ * @returns {HTMLElement} The list item element representing the file.
+ */
 const createAFile = (name, path) => {
   let ext = getExtension(path);
   let language = getMode(ext) === undefined ? "document" : getMode(ext).name;
@@ -241,6 +303,13 @@ const createAFile = (name, path) => {
   return li;
 };
 
+/**
+ * Creates a new untitled file tab and adds it to the active files list.
+ *
+ * @function createAUntitledFile
+ * @param {string} id - The identifier for the untitled file.
+ * @returns {void}
+ */
 const createAUntitledFile = (id) => {
   let language = getMode("html") === undefined ? "html" : getMode("html").name;
 
@@ -267,6 +336,13 @@ const createAUntitledFile = (id) => {
   });
 };
 
+/**
+ * Creates a DOM element representing a folder in the file explorer.
+ *
+ * @function createAFolder
+ * @param {string} path - The folder path.
+ * @returns {HTMLElement} The list item element representing the folder.
+ */
 const createAFolder = (path) => {
   let li = document.createElement("li");
   li.classList.add("folder");
@@ -287,6 +363,15 @@ const createAFolder = (path) => {
 ****************************************/
 let fileNum = 1;
 
+/**
+ * Recursively walks through a directory and builds a DOM structure representing the file tree.
+ *
+ * @function filewalker
+ * @param {HTMLElement} elem - The parent HTML element to append results to.
+ * @param {string} dir - The directory path to walk.
+ * @param {function} done - Callback function executed when walking is complete.
+ * @returns {void}
+ */
 function filewalker(elem, dir, done) {
   let results = [];
 
@@ -328,6 +413,13 @@ function filewalker(elem, dir, done) {
   });
 }
 
+/**
+ * Changes the currently open folder and updates the file explorer view.
+ *
+ * @function changeFolder
+ * @param {string} folderPath - The path of the folder to open.
+ * @returns {void}
+ */
 const changeFolder = (folderPath) => {
   // console.log(data.filePaths[0]);
   let ul = document.createElement("ul");
@@ -457,6 +549,12 @@ folderChange.addEventListener("click", (e) => {
     });
 });
 
+/**
+ * Creates a new untitled file and opens it in the editor.
+ *
+ * @function NewFile
+ * @returns {void}
+ */
 const NewFile = () => {
   let untitled = document
     .getElementsByClassName("active-files-ul")[0]

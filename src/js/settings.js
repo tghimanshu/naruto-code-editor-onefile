@@ -1,4 +1,10 @@
+/**
+ * @fileoverview Loads and applies user settings from `src/data/settings.json`.
+ * Currently handles setting the background image of the main container.
+ */
+
 let settings;
+
 fs.readFile("src/data/settings.json", (err, content) => {
   // file data to string to json
   settings = JSON.parse(content.toString());
