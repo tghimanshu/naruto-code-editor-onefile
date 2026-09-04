@@ -16,7 +16,7 @@
   ],
   "author": "Himanshu Gohil",
   "devDependencies": {
-    "electron": "^43.4.1"
+    "electron": "^44.0.0"
   },
   "dependencies": {
     "electron-window-state": "^5.0.3"
